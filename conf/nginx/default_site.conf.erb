@@ -4,6 +4,12 @@ root /app/<%= ENV['DOCUMENT_ROOT'] %>;
 location ~ \.php {
     include fastcgi_params;
     fastcgi_param  SCRIPT_FILENAME    $document_root$fastcgi_script_name;
+
+    <% if ENV.has_key? "SERVER_PORT" and ENV['SERVER_PORT'].to_s != "" #Custom PORT for docker%>
+		fastcgi_param SERVER_PORT <%= ENV['SERVER_PORT'] %>;
+		fastcgi_param SERVER_NAME $http_host;
+	<% end %>
+
     fastcgi_pass php;
     fastcgi_buffers 256 4k;
 }
