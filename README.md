@@ -1,5 +1,6 @@
-# Advanced PHP Heroku Build Pack
+# Advanced PHP Dokku Build Pack
 
+Idea of this fork is to have dokku compatible way to push Php applications. Mainly wordpress single/multisite. This fork fixes random redirect to port 5000 and logs not showing in ubuntu 14.04 installation.
 ## What makes it unique?
 
 * Supports PHP 5.3, 5.4 and 5.5
