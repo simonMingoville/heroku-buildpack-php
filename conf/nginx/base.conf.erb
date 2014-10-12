@@ -73,5 +73,40 @@ http {
         <% Shellwords.split(ENV['NGINX_INCLUDES'].to_s).each do |f| %>
         include /app/<%= f %>;
         <% end %>
+        
+        ocation / {
+            root "/app/httpdocs";
+            autoindex on;
+            index index.php
+
+
+
+
+
+           rewrite "^/([a-z]{2}).html" /?lang=$1;
+            if (!-e $request_filename){
+               rewrite ^(.*)$ /index.php;
+        
+            }
+
+
+
+                location /payment_success {
+                rewrite ^/(payment_success|webBillReturn)$ /$1.php break;
+                }
+                location /webBillReturn {
+                rewrite ^/(payment_success|webBillReturn)$ /$1.php break;
+                }
+
+
+                location /favicon {
+                rewrite ^/favicon.ico http://cdn0.mingoville.net/mingovillecom/img/favicon.ico redirect;
+                rewrite ^/favicon.png http://cdn0.mingoville.net/mingovillecom/img/favicon.png redirect;
+                }
+                location /public {
+                rewrite ^/public/static/favicon.png http://cdn0.mingoville.net/mingovillecom/img/favicon.png redirect;
+                rewrite ^/public/static/favicon.ico http://cdn0.mingoville.net/mingovillecom/img/favicon.ico redirect;
+                }
+    }
     }
 }
