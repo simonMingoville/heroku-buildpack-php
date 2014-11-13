@@ -75,7 +75,7 @@ fi
 
 status "Installing dependencies"
 npm install --production 2>&1 | indent
-npm install grunt-cli 2>&1 | ident
+npm install grunt-cli 2>&1 | indent
 
 status "Pruning unused dependencies"
 npm prune 2>&1 | indent
