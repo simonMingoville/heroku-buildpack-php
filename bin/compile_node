@@ -95,7 +95,7 @@ mkdir -p $build_dir/.profile.d
 echo "export PATH=\"\$HOME/vendor/node/bin:\$HOME/bin:\$HOME/node_modules/.bin:\$PATH\"" > $build_dir/.profile.d/nodejs.sh
 
 status "Running grunt script"
-grunt --force
+$build_dir/node_modules/grunt-cli/bin/grunt  --force
 
 # Post package.json to nomnom service
 # Use a subshell so it can't break the build.
